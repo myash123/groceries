@@ -23,6 +23,13 @@ const InstructionsList = styled.ul`
 const SelectedRecipe = (props) => {
 
   const ingredients = props.recipe.ingredients
+
+  /**Later will use format for Add To Cart API: https://www.amazon.com/gp/aws/cart/add.html
+    ?ASIN.1=B07PFDYT9T
+    &Quantity.1=1
+    &Quantity.2=1
+    &Quantity.3=1
+  **/
   const amazonStoreLink = props.recipe.amazonRef
   const instructions = props.recipe.instructions
 
