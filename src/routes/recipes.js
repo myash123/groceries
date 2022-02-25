@@ -5,25 +5,6 @@ import { getRecipes } from '../recipe_data'
 import RecipeRow from './recipeRow'
 import SelectedRecipe from './selectedRecipe'
 
-const Container = styled.div`
-  display: flex; 
-  flex-direction: row;
-  justify-content: space-around;
-  border: black 3px;
-  margin-left: 20%;
-  margin-right: 20%;
-  padding: 5px;
-`
-
-const RecipeList = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  cursor: pointer;
-  overflow: scroll;
-  max-height: 800px;
-`
-
 const Recipes = () => {
 
   const [selectedRecipe, setSelectedRecipe] = useState('');
@@ -57,3 +38,19 @@ const Recipes = () => {
 }
 
 export default Recipes
+
+const Container = styled.div`
+  display: flex; 
+  flex-direction: row;
+  border: black 3px;
+  margin-left: 20%;
+  margin-right: 20%;
+`
+
+const RecipeList = styled.div`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: scroll;
+  max-height: 800px;
+`

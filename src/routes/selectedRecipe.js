@@ -1,45 +1,16 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
-  width: 50%;
-  background-color: lightblue;
-  display: flex;
-  justify-content: center;
-`
-const Recipe = styled.div`
-`
-const ItemImage = styled.img`
-  max-height: 200px;
-  width: 300px;
-  padding-left: 10px;
-`
-const IngredientList = styled.ul`
-  list-style-type: none;
-`
-const InstructionsList = styled.ul`
-  list-style-type: none;
-`
-
 const SelectedRecipe = (props) => {
 
   const ingredients = props.recipe.ingredients
 
-  /**Later will use format for Add To Cart API: https://www.amazon.com/gp/aws/cart/add.html
-    ?ASIN.1=B07PFDYT9T
-    &Quantity.1=1
-    &Quantity.2=1
-    &Quantity.3=1
-  **/
   const amazonStoreLink = props.recipe.amazonRef
   const instructions = props.recipe.instructions
 
-  const ingredientsList = (ingredients, amazonRef) => {
+  const ingredientsList = (ingredients) => {
     if(ingredients) {
       return ingredients.split(";").map( (ingredient) => 
-      <li 
-        key={ingredient}>
-          <a href={amazonStoreLink} target="_blank" >{ingredient}</a>
-      </li>)
+      <li key={ingredient}>{ingredient}</li>)
     }
   }
   const instructionsList = (instructions) => {
@@ -49,21 +20,52 @@ const SelectedRecipe = (props) => {
   }
   return (
     <Container>
-        <Recipe>
-          <h1>{props.recipe.name}</h1>
-          <ItemImage src={props.recipe.img} ></ItemImage>
-          <p>{props.recipe.description}</p>
-          <h2>Ingredients</h2>
-          <IngredientList>
-            {ingredientsList(ingredients)}
-          </IngredientList>
-          <h2>Preparation</h2>
-          <InstructionsList>
-            {instructionsList(instructions)}
-          </InstructionsList>
-        </Recipe>
+        <h1>{props.recipe.name}</h1>
+        <ItemImage src={props.recipe.img} ></ItemImage>
+        <p>{props.recipe.description}</p>
+        <h2>Ingredients</h2>
+        <IngredientList>
+          {ingredientsList(ingredients)}
+        </IngredientList>
+        <AddToCart href={amazonStoreLink} target="_blank">Add Ingredients to Cart</AddToCart>
+        <h2>Preparation</h2>
+        <InstructionsList>
+          {instructionsList(instructions)}
+        </InstructionsList>
     </Container>
   )
 }
 
 export default SelectedRecipe
+
+const Container = styled.div`
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const AddToCart = styled.a`
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+`
+const ItemImage = styled.img`
+  max-height: 200px;
+  width: 300px;
+`
+const IngredientList = styled.ul`
+  list-style: none;
+  padding-left: 0;
+  margin-top: -10px;
+`
+const InstructionsList = styled.ul`
+  list-style: none;
+  margin-top: -10px;  
+`

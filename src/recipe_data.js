@@ -2,7 +2,7 @@ const recipes = [
   {
     name: "Spaghetti",
     id: 12345,
-    amazonRef: "http://amazon.com",
+    amazonRef: "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B00WBGKJPW&Quantity.1=1&ASIN.2=B00GOAA76C&Quantity.2=1&ASIN.3=B00CIZCLZC&Quantity.3=1&ASIN.4=B010BUE6CG&Quantity.4=1&ASIN.5=B097F282FC&Quantity.5=1",
     img: "images/spaghetti.jpeg",
     description: "Spaghetti is great and easy to make",
     ingredients: "spaghetti;tomato sauce;parmasean cheese;fresh pepper;basil",
@@ -11,7 +11,7 @@ const recipes = [
   {
     name: "Scrambled eggs",
     id: 23456,
-    amazonRef: "http://www.amazon.com",
+    amazonRef: "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B00WBGKJPW&Quantity.1=1&ASIN.2=B00GOAA76C&Quantity.2=1&ASIN.3=B00CIZCLZC&Quantity.3=1&ASIN.4=B010BUE6CG&Quantity.4=1&ASIN.5=B097F282FC&Quantity.5=1",
     img: "images/egg.jpeg",
     description: "Scrambled eggs, of course",
     ingredients: "eggs;shredded cheese;salt;pepper;hot sauce",
@@ -21,7 +21,7 @@ const recipes = [
   {
     name: "Steak",
     id: 34567,
-    amazonRef: "http://www.amazon.com",
+    amazonRef: "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B00WBGKJPW&Quantity.1=1&ASIN.2=B00GOAA76C&Quantity.2=1&ASIN.3=B00CIZCLZC&Quantity.3=1&ASIN.4=B010BUE6CG&Quantity.4=1&ASIN.5=B097F282FC&Quantity.5=1",
     img: "images/steak.jpeg",
     description: "It's a steak",
     ingredients: "Steak;butter;salt;garlic",
@@ -31,7 +31,7 @@ const recipes = [
   {
     name: "Tomato Soup",
     id: 2333456,
-    amazonRef: "http://www.amazon.com",
+    amazonRef: "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B00WBGKJPW&Quantity.1=1&ASIN.2=B00GOAA76C&Quantity.2=1&ASIN.3=B00CIZCLZC&Quantity.3=1&ASIN.4=B010BUE6CG&Quantity.4=1&ASIN.5=B097F282FC&Quantity.5=1",
     img: "images/tomato-soup.jpeg",
     description: "Ahh, tomato soup in the summertime",
     ingredients: "tomato soup;green onions;salt;pepper;hot sauce",
@@ -41,7 +41,7 @@ const recipes = [
   {
     name: "Tuna Salad",
     id: 23441234456,
-    amazonRef: "http://www.amazon.com",
+    amazonRef: "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B00WBGKJPW&Quantity.1=1&ASIN.2=B00GOAA76C&Quantity.2=1&ASIN.3=B00CIZCLZC&Quantity.3=1&ASIN.4=B010BUE6CG&Quantity.4=1&ASIN.5=B097F282FC&Quantity.5=1",
     img: "images/tuna-salad.jpeg",
     description: "Add mayo",
     ingredients: "canned tunafish;pickles;salt;pepper;mayo",

@@ -1,17 +1,5 @@
 import styled from 'styled-components'
 
-const ListItem = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  border-bottom: 1px solid black;
-`
-
-const ItemImage = styled.img`
-  max-height: 200px;
-  width: auto;
-`
-
 const RecipeRow = (props) => {
   return (
     <ListItem onClick={ () => props.handleClick(props.recipe) }>
@@ -23,3 +11,15 @@ const RecipeRow = (props) => {
 }
 
 export default RecipeRow
+
+const ListItem = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+`
+
+const ItemImage = styled.img`
+  max-height: 200px;
+  width: auto;
+`
