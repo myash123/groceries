@@ -20,7 +20,10 @@ const SelectedRecipe = (props) => {
   }
   return (
     <Container>
-        <h1>{props.recipe.name}</h1>
+        <Header>
+          <h1>{props.recipe.name}</h1>
+          <Save>Save this recipe</Save>
+        </Header>
         <ItemImage src={props.recipe.img} ></ItemImage>
         <p>{props.recipe.description}</p>
         <h2>Ingredients</h2>
@@ -68,4 +71,22 @@ const IngredientList = styled.ul`
 const InstructionsList = styled.ul`
   list-style: none;
   margin-top: -10px;  
+`
+const Header = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`
+const Save = styled.a`
+  background-color: #4CAF50;
+  height: 25px;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
 `
