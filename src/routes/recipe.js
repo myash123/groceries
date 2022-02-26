@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const RecipeRow = (props) => {
+const Recipe = (props) => {
   return (
     <ListItem onClick={ () => props.handleClick(props.recipe) }>
       <h1>{props.recipe.name}</h1>
@@ -10,7 +10,7 @@ const RecipeRow = (props) => {
   )
 }
 
-export default RecipeRow
+export default Recipe
 
 const ListItem = styled.div`
   display: flex;

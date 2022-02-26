@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import React, { useState } from 'react';
 
 import { getRecipes } from '../recipe_data'
-import RecipeRow from './recipeRow'
+import RecipeList from './recipeList'
 import SelectedRecipe from './selectedRecipe'
 
 const Recipes = () => {
@@ -22,35 +22,26 @@ const Recipes = () => {
   const recipes = getRecipes()
 
   return (
-    <Container>
-      <RecipeList>      
-        {recipes.map((recipe) => 
-           <RecipeRow
-             recipe={recipe}
-             key={recipe.id}           
-             handleClick={handleClick}
-           ></RecipeRow>
-        )}
-       </RecipeList>
+    <MainContainer>
+      <RecipeList 
+        recipes={recipes}
+        handleClick={handleClick}  
+      >
+      </RecipeList>
+       
        {onRecipeSelection(selectedRecipe)}
-    </Container>
+
+    </MainContainer>
   )
 }
 
 export default Recipes
 
-const Container = styled.div`
+const MainContainer = styled.div`
   display: flex; 
   flex-direction: row;
+  justify-content: center;
   border: black 3px;
   margin-left: 20%;
   margin-right: 20%;
-`
-
-const RecipeList = styled.div`
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  overflow: scroll;
-  max-height: 800px;
 `
