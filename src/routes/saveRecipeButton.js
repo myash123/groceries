@@ -1,12 +1,20 @@
 import styled from 'styled-components'
+import axios from 'axios'
 
-const SaveRecipeButton = () => {
-  return(
-    <form action="" method="post">
-      <Button name="addToCart" value="add">Save this recipe</Button>
-    </form>
-    
-  )
+const SaveRecipeButton = (props) => {
+  const addRecipe = () => {
+
+    const recipe = {
+      "name": props.recipe.name,
+      "amazon_reference": props.recipe.amazon_reference,
+      "description": props.recipe.description,
+      "ingredients": props.recipe.ingredients,
+      "instructions": props.recipe.instructions
+  }
+    axios.post("localhost:4000/save_recipe", recipe)
+      .then(res => console.log(res.data))
+  }
+  return <Button name="saveRecipe" value="add" onClick={addRecipe}>Save this recipe</Button>
 }
 
 export default SaveRecipeButton

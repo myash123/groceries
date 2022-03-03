@@ -5,10 +5,6 @@ const mongoose = require("mongoose")
 const Router = require('./routes/routes')
 const app = express()
 
-app.use(express.json())
-
-const db_uri = process.env.DB_URI
-
 mongoose.connect(process.env.DB_URI,
 {
     useNewUrlParser: true,

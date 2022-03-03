@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 import RecipeList from './recipeList'
 
+const Saved = () => {
+  return(
+    <div> hello </div>
+  )
+}
 
+export default Saved
 
 const SavedRecipesContainer = styled.div`
   display: flex; 

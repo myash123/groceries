@@ -23,7 +23,7 @@ const SelectedRecipe = (props) => {
     <Container>
         <Header>
           <h1>{props.recipe.name}</h1>
-          <SaveRecipeButton></SaveRecipeButton>
+          <SaveRecipeButton recipe={props.recipe}></SaveRecipeButton>
         </Header>
         <ItemImage src={props.recipe.img} ></ItemImage>
         <p>{props.recipe.description}</p>
