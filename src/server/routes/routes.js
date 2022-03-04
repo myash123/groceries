@@ -7,6 +7,7 @@ app.post("/save_recipe", async (request, response) => {
 
   try {
     await recipe.save();
+    console.log(request.body)
     response.send(recipe);
   } catch (error) {
     response.status(500).send(error);
