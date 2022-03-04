@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const SaveRecipeButton = (props) => {
   
-  axios.defaults.baseURL = 'http://localhost:4000';
+  axios.defaults.baseURL = 'http://localhost:4000'
   
   const addRecipe = () => {
 
@@ -32,7 +32,7 @@ export default SaveRecipeButton
 
 const Button = styled.div`
   background-color: #4CAF50;
-  height: 40px;
+  height: 20px;
   border: none;
   color: white;
   padding: 10px;

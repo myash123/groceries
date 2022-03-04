@@ -18,14 +18,14 @@ mongoose.connect(process.env.DB_URI,
   }
 )
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error: "));
+const db = mongoose.connection
+db.on("error", console.error.bind(console, "connection error: "))
 db.once("open", function () {
-  console.log("Connected successfully");
+  console.log("Connected successfully")
 });
 
-app.use(Router);
+app.use(Router)
 
 app.listen(4000, () => {
-  console.log("Server is running at port 4000");
+  console.log("Server is running at port 4000")
 });

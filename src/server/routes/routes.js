@@ -1,27 +1,27 @@
-const express = require("express");
-const recipeModel = require("../recipe_model");
-const app = express();
+const express = require("express")
+const recipeModel = require("../recipe_model")
+const app = express()
 
 app.post("/save_recipe", async (request, response) => {
-  const recipe = new recipeModel(request.body);
+  const recipe = new recipeModel(request.body)
 
   try {
-    await recipe.save();
+    await recipe.save()
     console.log(request.body)
-    response.send(recipe);
+    response.send(recipe)
   } catch (error) {
-    response.status(500).send(error);
+    response.status(500).send(error)
     console.log(error)
   }
 });
 
 app.get("/recipes", async (request, response) => {
-  const recipes = await recipeModel.find({});
+  const recipes = await recipeModel.find({})
 
   try {
-    response.send(recipes);
+    response.send(recipes)
   } catch (error) {
-    response.status(500).send(error);
+    response.status(500).send(error)
   }
 });
 
