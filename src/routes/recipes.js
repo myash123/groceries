@@ -4,7 +4,7 @@ import { getRecipes } from '../recipe_data'
 import RecipeList from './recipeList'
 import SelectedRecipe from './selectedRecipe'
 
-const Recipes = () => {
+const Recipes = (props) => {
 
   const [selectedRecipe, setSelectedRecipe] = useState('');
 
@@ -18,12 +18,10 @@ const Recipes = () => {
     }
   }
 
-  const recipes = getRecipes()
-
   return (
     <MainContainer>
       <RecipeList 
-        recipes={recipes}
+        recipes={props.recipes}
         handleClick={handleClick}  
       >
       </RecipeList>
