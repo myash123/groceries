@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import RecipeList from './recipeList' 
+import Recipes from './recipes' 
 import React, { useEffect } from 'react'
 import axios from 'axios'
 
@@ -12,30 +12,23 @@ const Saved = () => {
 
   axios.defaults.baseURL = 'http://localhost:4000'
 
-  const getSavedRecipes = () => {
-    axios.get("/recipes")
-      .then(response => {
-        console.log(response.data)
-      })
-      .catch((error) => console.log(error))    
+  const renderList = async () => {
+    const response = await axios.get("/recipes")
+    console.log(response.data[1])
   }
-
-  useEffect(() => {
-    getSavedRecipes();
-  }, [])
   
   return(
-    <div> hello </div>
+    <div onClick={renderList}>Hello</div>
   )
 }
 
 export default Saved
 
-const SavedRecipesContainer = styled.div`
-  display: flex; 
-  flex-direction: row;
-  justify-content: center;
-  border: black 3px;
-  margin-left: 20%;
-  margin-right: 20%;
-`
+// const SavedRecipesContainer = styled.div`
+//   display: flex; 
+//   flex-direction: row;
+//   justify-content: center;
+//   border: black 3px;
+//   margin-left: 20%;
+//   margin-right: 20%;
+// `
