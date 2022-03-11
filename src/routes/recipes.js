@@ -1,16 +1,22 @@
 import styled from 'styled-components'
-import React, { useState } from 'react';
-import { getRecipes } from '../recipe_data'
+import React, { useState, useEffect } from 'react';
 import RecipeList from './recipeList'
 import SelectedRecipe from './selectedRecipe'
+import queryRecipes from '../server/db_helper'
 
 const Recipes = (props) => {
 
   const [selectedRecipe, setSelectedRecipe] = useState('');
+  const [list, setList] = useState(queryRecipes)
 
   const handleClick = (recipe) => {
     setSelectedRecipe(recipe)
   }
+
+  useEffect( async () => { 
+    const newList = await queryRecipes()
+    setList(newList.data) }, []
+  )
 
   const onRecipeSelection = (selectedRecipe) => {
     if(selectedRecipe) {
@@ -27,7 +33,6 @@ const Recipes = (props) => {
       </RecipeList>
        
        {onRecipeSelection(selectedRecipe)}
-
     </MainContainer>
   )
 }
