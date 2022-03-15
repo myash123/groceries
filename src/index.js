@@ -16,7 +16,7 @@ render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="home" element={<Home />} />
-        <Route path="recipes" element={<Recipes />} />
+        <Route path="recipes" element={<Recipes route="/recipes" />} />
         <Route path="saved" element={<Saved />} />
       </Route>
     </Routes>

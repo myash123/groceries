@@ -4,7 +4,7 @@ import RecipeList from './recipeList'
 import SelectedRecipe from './selectedRecipe'
 import queryRecipes from '../server/db_helper'
 
-const Recipes = () => {
+const Recipes = (props) => {
 
   const [selectedRecipe, setSelectedRecipe] = useState('');
   const [list, setList] = useState([])
@@ -15,7 +15,7 @@ const Recipes = () => {
 
   useEffect(() => { 
     const setRecipes = async () => {
-      const newList = await queryRecipes()
+      const newList = await queryRecipes(props.route)
       setList(newList.data)
     }
     setRecipes()
