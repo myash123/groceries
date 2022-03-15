@@ -3,11 +3,11 @@ const recipeModel = require("../recipe_model")
 const app = express()
 
 app.post("/save_recipe", async (request, response) => {
+
   const recipe = new recipeModel(request.body)
 
   try {
     await recipe.save()
-    console.log(request.body)
     response.send(recipe)
   } catch (error) {
     response.status(500).send(error)

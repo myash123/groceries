@@ -4,19 +4,22 @@ import RecipeList from './recipeList'
 import SelectedRecipe from './selectedRecipe'
 import queryRecipes from '../server/db_helper'
 
-const Recipes = (props) => {
+const Recipes = () => {
 
   const [selectedRecipe, setSelectedRecipe] = useState('');
-  const [list, setList] = useState(queryRecipes)
+  const [list, setList] = useState([])
 
   const handleClick = (recipe) => {
     setSelectedRecipe(recipe)
   }
 
-  useEffect( async () => { 
-    const newList = await queryRecipes()
-    setList(newList.data) }, []
-  )
+  useEffect(() => { 
+    const setRecipes = async () => {
+      const newList = await queryRecipes()
+      setList(newList.data)
+    }
+    setRecipes()
+  }, [])
 
   const onRecipeSelection = (selectedRecipe) => {
     if(selectedRecipe) {
@@ -27,8 +30,8 @@ const Recipes = (props) => {
   return (
     <MainContainer>
       <RecipeList 
-        recipes={props.recipes}
-        handleClick={handleClick}  
+        recipes={list}
+        handleClick={handleClick}
       >
       </RecipeList>
        

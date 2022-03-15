@@ -4,7 +4,6 @@ import SaveRecipeButton from './saveRecipeButton'
 const SelectedRecipe = (props) => {
 
   const ingredients = props.recipe.ingredients
-
   const amazonStoreLink = props.recipe.amazonRef
   const instructions = props.recipe.instructions
 
@@ -14,6 +13,7 @@ const SelectedRecipe = (props) => {
       <li key={ingredient}>{ingredient}</li>)
     }
   }
+
   const instructionsList = (instructions) => {
     if(instructions) {
       return instructions.split(";").map( (instruction) => <li key={instruction}>{instruction}</li> )

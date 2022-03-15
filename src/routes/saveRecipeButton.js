@@ -1,18 +1,24 @@
 import styled from 'styled-components'
 import axios from 'axios'
+import { useState } from 'react'
 
 const SaveRecipeButton = (props) => {
   
+  const [a,b] = useState('')
+
   axios.defaults.baseURL = 'http://localhost:4000'
   
   const addRecipe = () => {
 
     const data = {
       "name": props.recipe.name,
-      "amazon_reference": props.recipe.amazon_reference,
+      "amazonRef": props.recipe.amazonRef,
+      "img": props.recipe.img,
       "description": props.recipe.description,
       "ingredients": props.recipe.ingredients,
-      "instructions": props.recipe.instructions
+      "instructions": props.recipe.instructions,
+      "main_display": false,
+      "saved": true,
     }
 
     axios.post("/save_recipe", data, {
@@ -24,7 +30,9 @@ const SaveRecipeButton = (props) => {
      }, 
     })
       .then(res => console.log(res))
+      .then(res => console.log(data))
   }
+  
   return <Button name="saveRecipe" value="add" onClick={addRecipe}>Save this recipe</Button>
 }
 

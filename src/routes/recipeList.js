@@ -7,7 +7,7 @@ const RecipeList = (props) => {
       {props.recipes.map((recipe) => 
           <Recipe
             recipe={recipe}
-            key={recipe.id}           
+            key={recipe._id}           
             handleClick={props.handleClick}
           ></Recipe>
       )}
