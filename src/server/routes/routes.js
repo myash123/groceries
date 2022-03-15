@@ -3,15 +3,20 @@ const recipeModel = require("../recipe_model")
 const app = express()
 
 app.post("/save_recipe", async (request, response) => {
+  const duplicateCheck = await recipeModel.find({ "saved": true, name: request.body.name })
 
-  const recipe = new recipeModel(request.body)
+  if(duplicateCheck.length < 1) {
+    console.log(duplicateCheck)
+   
+    const recipe = new recipeModel(request.body)
 
-  try {
-    await recipe.save()
-    response.send(recipe)
-  } catch (error) {
-    response.status(500).send(error)
-    console.log(error)
+    try {
+      await recipe.save()
+      response.send(recipe)
+    } catch (error) {
+      response.status(500).send(error)
+      console.log(error)
+    }
   }
 });
 

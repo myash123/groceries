@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 import axios from 'axios'
-import { useState } from 'react'
+import queryRecipes from '../server/db_helper'
 
 const SaveRecipeButton = (props) => {
   
-  const [a,b] = useState('')
-
   axios.defaults.baseURL = 'http://localhost:4000'
   
   const addRecipe = () => {
@@ -30,7 +28,6 @@ const SaveRecipeButton = (props) => {
      }, 
     })
       .then(res => console.log(res))
-      .then(res => console.log(data))
   }
   
   return <Button name="saveRecipe" value="add" onClick={addRecipe}>Save this recipe</Button>
