@@ -5,9 +5,9 @@ import {
   Route
 } from "react-router-dom";
 import App from "./App";
-import Home from './routes/home';
-import Recipes from './routes/recipes';
-import Saved from './routes/saved'
+import Home from './components/home';
+import Recipes from './components/recipes';
+import Saved from './components/saved'
 
 const rootElement = document.getElementById("root");
 
@@ -22,4 +22,4 @@ render(
     </Routes>
   </BrowserRouter>,
   rootElement
-);
+)
