@@ -1,8 +1,11 @@
 import {Navigate} from 'react-router-dom'
 import {useAuthValue} from './auth/authContext'
 
-export default function PrivateRoute({children}) {
+function PrivateRoute({children}) {
+
   const {currentUser} = useAuthValue()
+
+  console.log(currentUser?.emailVerified)
 
   if(!currentUser?.emailVerified){
     return <Navigate to='/login' replace/>
@@ -10,3 +13,5 @@ export default function PrivateRoute({children}) {
 
   return children
 }
+
+export default PrivateRoute

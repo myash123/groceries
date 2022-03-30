@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Recipe = (props) => {
+function Recipe (props) {
   return (
     <ListItem onClick={ () => props.handleClick(props.recipe) }>
       <h1>{props.recipe.name}</h1>

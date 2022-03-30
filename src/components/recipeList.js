@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Recipe from './recipe'
 
-const RecipeList = (props) => {
+function RecipeList (props) {
   return (
     <RecipeListContainer>      
       {props.recipes.map((recipe) => 

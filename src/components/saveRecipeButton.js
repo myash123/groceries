@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 import queryRecipes from '../server/db_helper'
 
-const SaveRecipeButton = (props) => {
+function SaveRecipeButton (props) {
   
   axios.defaults.baseURL = 'http://localhost:4000'
   

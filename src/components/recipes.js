@@ -4,7 +4,7 @@ import RecipeList from './recipeList'
 import SelectedRecipe from './selectedRecipe'
 import queryRecipes from '../server/db_helper'
 
-const Recipes = (props) => {
+function Recipes (props) {
 
   const [selectedRecipe, setSelectedRecipe] = useState('');
   const [list, setList] = useState([])

@@ -25,12 +25,11 @@ function App() {
     })
   }, [])
 
-  //TODO: Include private profile route
   return (
     <Router>
       <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
         <Routes>
-          <Route path='/profile' element={
+          <Route path='/' element={
             <PrivateRoute>
               <Profile/>
             </PrivateRoute>
@@ -41,11 +40,15 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/recipes" element={<Recipes route="/recipes" />} />
-          <Route path="/saved" element={<Saved />} />
+          <Route path="/saved" element={
+            <PrivateRoute>
+              <Saved />
+            </PrivateRoute>
+          }/>
         </Routes>  
       </AuthProvider>
     </Router>
   );
 }
 
-export default App;
+export default App

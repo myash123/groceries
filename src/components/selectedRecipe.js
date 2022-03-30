@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import SaveRecipeButton from './saveRecipeButton'
 
-const SelectedRecipe = (props) => {
+function SelectedRecipe (props) {
 
   const ingredients = props.recipe.ingredients
   const amazonStoreLink = props.recipe.amazonRef
