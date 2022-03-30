@@ -1,20 +1,51 @@
-import { Outlet, Link } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Profile from './components/profile'
+import Register from './components/register'
+import VerifyEmail from './components/verifyEmail'
+import Login from './components/login'
+import {useState, useEffect} from 'react'
+import {AuthProvider} from './components/auth/authContext'
+import {auth} from './components/auth/firebase'
+import {onAuthStateChanged} from 'firebase/auth'
+import PrivateRoute from './components/privateRoute'
 
-export default function App() {
+import Home from './components/home'
+import Recipes from './components/recipes'
+import Saved from './components/saved'
+
+
+function App() {
+
+  const [currentUser, setCurrentUser] = useState(null)
+  const [timeActive, setTimeActive] = useState(false)
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user)
+    })
+  }, [])
+
+  //TODO: Include private profile route
   return (
-    <div>
-      <h1>Order Groceries</h1>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem"
-        }}
-      >
-        <Link to="/home">Home</Link> |{" "}
-        <Link to="/saved">Saved</Link> |{" "}
-        <Link to="/recipes">Recipes</Link>
-      </nav>
-      <Outlet />
-    </div>
-  );    
+    <Router>
+      <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
+        <Routes>
+          <Route path='/profile' element={
+            <PrivateRoute>
+              <Profile/>
+            </PrivateRoute>
+          }/>
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path='/verify-email' element={<VerifyEmail/>} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/recipes" element={<Recipes route="/recipes" />} />
+          <Route path="/saved" element={<Saved />} />
+        </Routes>  
+      </AuthProvider>
+    </Router>
+  );
 }
+
+export default App;
