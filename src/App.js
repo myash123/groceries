@@ -9,7 +9,6 @@ import {auth} from './components/auth/firebase'
 import {onAuthStateChanged} from 'firebase/auth'
 import PrivateRoute from './components/privateRoute'
 
-import Home from './components/home'
 import Recipes from './components/recipes'
 import Saved from './components/saved'
 
@@ -37,7 +36,6 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
           <Route path='/verify-email' element={<VerifyEmail/>} />
-          <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/recipes" element={<Recipes route="/recipes" />} />
           <Route path="/saved" element={

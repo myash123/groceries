@@ -1,8 +1,10 @@
 import styled from 'styled-components'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import RecipeList from './recipeList'
 import SelectedRecipe from './selectedRecipe'
 import queryRecipes from '../server/db_helper'
+import NavBar from './navbar'
 
 function Recipes (props) {
 
@@ -28,24 +30,33 @@ function Recipes (props) {
   }
 
   return (
-    <MainContainer>
-      <RecipeList 
-        recipes={list}
-        handleClick={handleClick}
-      >
-      </RecipeList>
-       
-       {onRecipeSelection(selectedRecipe)}
-    </MainContainer>
+    <Container>
+      <NavBar />
+      <RecipeContainer>
+        <RecipeList 
+          recipes={list}
+          handleClick={handleClick}
+        >
+        </RecipeList>
+        
+        {onRecipeSelection(selectedRecipe)}
+      </RecipeContainer>
+    </Container>
   )
 }
 
 export default Recipes
 
-const MainContainer = styled.div`
+const RecipeContainer = styled.div`
   display: flex; 
   flex-direction: row;
   border: black 3px;
   margin-left: 20%;
   margin-right: 20%;
+`
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 `
