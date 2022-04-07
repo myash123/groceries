@@ -43,10 +43,12 @@ function SelectedRecipe (props) {
 export default SelectedRecipe
 
 const Container = styled.div`
-  background-color: lightblue;
+  background-color: #fffdfd;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid #0d1010;
+  border-radius: 30px;
 `
 
 const ItemImage = styled.img`

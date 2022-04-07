@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import '../App.css' 
 
 function Recipe (props) {
   return (
@@ -16,7 +17,12 @@ const ListItem = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border-bottom: 1px solid black;
+  border: 1px solid #0d1010;
+  padding: 0 2rem 2rem 2rem;
+  margin: 0 2rem 2rem 2rem;
+  border-radius: 30px;
+  box-shadow: 2px 2px #0d1010;
+  background-color: #fffdfd;
 `
 
 const ItemImage = styled.img`
