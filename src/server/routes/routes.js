@@ -23,7 +23,7 @@ app.post("/save_recipe", async (request, response) => {
 
 //Gets recipes seen by all users
 app.get("/recipes", async (request, response) => {
-  const recipes = await recipeModel.find({"saved": false})
+  const recipes = await recipeModel.find({"main_display": true})
 
   try {
     response.send(recipes)
@@ -33,9 +33,10 @@ app.get("/recipes", async (request, response) => {
 });
 
 //Gets recipes saved by authenticating user
-app.get("/get_saved_recipes", async (request, response) => {
+app.get("/saved/:userId", async (request, response) => {
   const recipes = await recipeModel.find({"saved": true})
-
+  const p = request.params
+  console.log(p)
   try {
     response.send(recipes)
   } catch (error) {
