@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useAuthValue } from './auth/authContext'
 
 function NavBar() {
+  const { currentUser } = useAuthValue()
 
   const StyledLink = styled(Link)`
     color: #fdfefd;
@@ -14,9 +16,13 @@ function NavBar() {
   return(
     <Container>
       <NavButtons>
+        { 
+          !currentUser ? 
+            <StyledLink to='/register'>Sign up</StyledLink> :
+            <StyledLink to='/account'>Account</StyledLink>
+        }
         <StyledLink to='/recipes'>New recipes</StyledLink> 
         <StyledLink to='/saved'>Saved recipes</StyledLink>
-        <StyledLink to='/register'>Sign up</StyledLink>
       </NavButtons>
       <SocialMedia>
         <SocialMediaButton src='images/instagram.svg' />
@@ -45,6 +51,7 @@ const SocialMedia = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  padding: 1rem;
 `
 const SocialMediaButton = styled.img`
   height: 2rem;

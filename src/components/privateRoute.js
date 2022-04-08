@@ -5,8 +5,6 @@ function PrivateRoute({children}) {
 
   const {currentUser} = useAuthValue()
 
-  console.log(currentUser?.emailVerified)
-
   if(!currentUser?.emailVerified){
     return <Navigate to='/login' replace/>
   }

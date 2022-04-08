@@ -1,8 +1,10 @@
+import styled from 'styled-components'
 import {useState} from 'react'
 import {auth} from './auth/firebase'
 import {useNavigate, Link} from 'react-router-dom'
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import {useAuthValue} from './auth/authContext'
+import NavBar from './navbar'
 
 function Register() {
 
@@ -46,40 +48,69 @@ function Register() {
 
   return (
     <div>
-      <div>
+      <NavBar />
+      <Container>
         <h1>Register</h1>
         {error && <div>{error}</div>}
         <form onSubmit={register} name='registration_form'>
-          <input 
+          <Input 
             type='email' 
             value={email}
             placeholder="Enter your email"
             required
             onChange={e => setEmail(e.target.value)}/>
 
-          <input 
+          <Input 
             type='password'
             value={password} 
             required
             placeholder='Enter your password'
             onChange={e => setPassword(e.target.value)}/>
 
-            <input 
+          <Input 
             type='password'
             value={confirmPassword} 
             required
             placeholder='Confirm password'
             onChange={e => setConfirmPassword(e.target.value)}/>
 
-          <button type='submit'>Register</button>
+            <Button type='submit'>Sign up!</Button>
+
         </form>
-        <span>
-          Already have an account?  
-          <Link to='/login'>login</Link>
-        </span>
-      </div>
+        <P>
+          Already have an account? 
+          <span style={{"margin": ".5rem"}}><Link to='/login'>Login!</Link></span>
+        </P>
+      </Container>
     </div>
   )
 }
 
 export default Register
+
+const Container = styled.div`
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const Input = styled.input`
+  display: block;
+  padding: .5rem;
+  margin: .5rem;
+`
+
+const Button = styled.button`
+  background-color: #00cecb;
+  padding: .5rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  font-family: Arial;
+`
+const P = styled.p`
+  font-family: Arial;
+`

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import axios from 'axios'
-import queryRecipes from '../server/db_helper'
 
 function SaveRecipeButton (props) {
   
@@ -36,16 +35,16 @@ function SaveRecipeButton (props) {
 export default SaveRecipeButton
 
 const Button = styled.div`
-  background-color: #4CAF50;
-  height: 20px;
-  border: none;
-  color: white;
-  padding: 10px;
-  margin-top: 20px;
-  margin-left: 15px;
+  background-color: #fffdf1;
+  border: 1px solid black;
+  border-radius: 20px;
+  color: 0d1010;
+  padding: .75rem;
+  margin: 1rem 1rem 0 0;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+  align-self: flex-end;
 `

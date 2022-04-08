@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Profile from './components/profile'
+import Account from './components/account'
 import Register from './components/register'
 import VerifyEmail from './components/verifyEmail'
 import Login from './components/login'
@@ -28,9 +28,9 @@ function App() {
     <Router>
       <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
         <Routes>
-          <Route path='/' element={
+          <Route path='/account' element={
             <PrivateRoute>
-              <Profile/>
+              <Account/>
             </PrivateRoute>
           }/>
           <Route path="/login" element={<Login/>} />

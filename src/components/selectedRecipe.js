@@ -9,8 +9,12 @@ function SelectedRecipe (props) {
 
   const ingredientsList = (ingredients) => {
     if(ingredients) {
-      return ingredients.split(";").map( (ingredient) => 
-      <li key={ingredient}>{ingredient}</li>)
+      return ingredients.split(";").map((ingredient) => 
+        <li 
+          style={{"fontFamily": "Arial", "lineHeight": "1.5rem"}} 
+          key={ingredient}>
+            {ingredient}
+        </li>)
     }
   }
 
@@ -21,10 +25,8 @@ function SelectedRecipe (props) {
   }
   return (
     <Container>
-        <Header>
-          <h1>{props.recipe.name}</h1>
-          <SaveRecipeButton recipe={props.recipe}></SaveRecipeButton>
-        </Header>
+        <SaveRecipeButton recipe={props.recipe}></SaveRecipeButton>        
+        <Header>{props.recipe.name}</Header>
         <ItemImage src={props.recipe.img} ></ItemImage>
         <p>{props.recipe.description}</p>
         <h2>Ingredients</h2>
@@ -45,6 +47,7 @@ export default SelectedRecipe
 const Container = styled.div`
   background-color: #fffdfd;
   display: flex;
+  padding: 1rem;
   flex-direction: column;
   align-items: center;
   border: 1px solid #0d1010;
@@ -56,42 +59,31 @@ const ItemImage = styled.img`
   width: 300px;
 `
 const IngredientList = styled.ul`
-  list-style: none;
+  list-style: circle;
   padding-left: 0;
+  margin-top: -1rem;
+  align-self: center;
+  "line-height": "1.5rem"
+`
+const InstructionsList = styled.ol`
   margin-top: -10px;
+  line-height: 2rem;
+  font-family: Arial;
 `
-const InstructionsList = styled.ul`
-  list-style: none;
-  margin-top: -10px;  
-`
-const Header = styled.div`
+const Header = styled.h1`
   display: flex;
   justify-content: flex-start;
 `
-const Save = styled.a`
-  background-color: #4CAF50;
-  height: 25px;
-  border: none;
-  color: white;
-  padding: 10px;
-  margin-top: 20px;
-  margin-left: 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-`
-
 const AddToCart = styled.a`
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
+  background-color: #fffdf1;
+  border: 1px solid black;
+  border-radius: 20px;
+  color: 0d1010;
+  padding: .75rem;
+  margin: 1rem 1rem 0 0;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
   cursor: pointer;
 `
