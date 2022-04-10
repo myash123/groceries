@@ -7,12 +7,18 @@ const queryRecipes = (route) => {
     return new Promise((resolve) => {
       resolve(axios.get(route))
     })
-  
-  else {
+
+  if(route.includes('/saved/')) {
     return new Promise((resolve) => {
       resolve(axios.get(route))
-    })
+    }) 
   }
+  
+  // else {
+  //   return new Promise((resolve) => {
+  //     resolve(axios.get(route))
+  //   })
+  // }
 }
 
 export default queryRecipes

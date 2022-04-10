@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import styled from 'styled-components'
 import {useAuthValue} from './auth/authContext'
 import { signOut } from 'firebase/auth' 
@@ -6,8 +5,6 @@ import { auth } from './auth/firebase'
 import NavBar from './navbar'
 
 function Account() {
-
-  useEffect(() => { console.log(auth)}, [])
 
   const {currentUser} = useAuthValue()
 

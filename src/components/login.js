@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import {auth} from './auth/firebase'
@@ -12,7 +12,7 @@ function Login(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('') 
   const [error, setError] = useState('')
-  const {setTimeActive} = useAuthValue()
+  const {setTimeActive, currentUser} = useAuthValue()
   const navigate = useNavigate()
 
   const login = e => {
@@ -26,9 +26,9 @@ function Login(){
           navigate('/verify-email')
         })
       .catch(err => alert(err.message))
-    }else{
+    } else {
       navigate('/account')
-    }
+      }
     })
     .catch(err => setError(err.message))
   }

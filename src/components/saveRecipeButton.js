@@ -1,34 +1,44 @@
 import styled from 'styled-components'
 import axios from 'axios'
+import { useState, useEffect } from 'react'
+import { useAuthValue } from './auth/authContext'
+import queryRecipes from '../server/db_helper'
 
 function SaveRecipeButton (props) {
   
-  axios.defaults.baseURL = 'http://localhost:4000'
-  
+  const { currentUser } = useAuthValue()
+
+  const [getUserData, setUserData] = useState('')
+
+  //Load user data 
+  useEffect(async () => {
+    setUserData('')
+    const getRoute = '/saved/' + currentUser.uid
+    const userData = await queryRecipes(getRoute)
+    setUserData(userData.data[0]) //current user data is fetched as an array, but only contains one element (TODO: find out why)
+  }, [])
+
   const addRecipe = () => {
 
-    const data = {
-      "name": props.recipe.name,
-      "amazonRef": props.recipe.amazonRef,
-      "img": props.recipe.img,
-      "description": props.recipe.description,
-      "ingredients": props.recipe.ingredients,
-      "instructions": props.recipe.instructions,
-      "main_display": false,
-      "saved": true,
+    const userData = getUserData
+
+    //Check if user has already saved this recipe
+    if(userData.savedItems.includes(props.recipe._id)) {
+      return 
     }
 
-    axios.post("/save_recipe", data, {
+    //If user has not saved this recipe yet, save it
+    userData.savedItems.push(props.recipe._id)
+    axios.patch("/save_recipe", userData, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length"
-     }, 
+      }, 
     })
       .then(res => console.log(res))
-  }
-  
+  }  
   return <Button name="saveRecipe" value="add" onClick={addRecipe}>Save this recipe</Button>
 }
 
