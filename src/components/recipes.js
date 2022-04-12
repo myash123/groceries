@@ -14,6 +14,7 @@ function Recipes (props) {
 
   const [selectedRecipe, setSelectedRecipe] = useState('');
   const [list, setList] = useState([])
+  const { route } = props
 
   //Sets the selected recipe on click event
   const handleClick = (recipe) => {
@@ -22,12 +23,22 @@ function Recipes (props) {
 
   //List of recipes is generated based on route provided then loaded into state 
   useEffect(() => { 
-    const setRecipes = async () => {
-      const newList = await queryRecipes(props.route)
-      setList(newList.data)
+    if(route !== "/recipes/user/?recipe=") {
+      // console.log(route)
+      const setRecipes = async () => {
+        const newList = []    
+        const res = await queryRecipes(route)
+        const data = res.data
+        console.log(data)
+        newList.push(data)
+        setList(data)
+      }
+
+      if(list != []) {
+        setRecipes()
+      }
     }
-    setRecipes()
-  }, [])
+  }, [route])
 
   const onRecipeSelection = (selectedRecipe) => {
     if(selectedRecipe) {

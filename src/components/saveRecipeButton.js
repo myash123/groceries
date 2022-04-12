@@ -27,6 +27,8 @@ function SaveRecipeButton (props) {
       return 
     }
 
+    console.log(userData)
+
     //If user has not saved this recipe yet, save it
     userData.savedItems.push(props.recipe._id)
     axios.patch("/save_recipe", userData, {
