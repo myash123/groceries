@@ -14,7 +14,8 @@ function SelectedRecipe (props) {
           style={{"fontFamily": "Arial", "lineHeight": "1.5rem"}} 
           key={ingredient}>
             {ingredient}
-        </li>)
+        </li>
+      )
     }
   }
 
@@ -23,6 +24,7 @@ function SelectedRecipe (props) {
       return instructions.split(";").map( (instruction) => <li key={instruction}>{instruction}</li> )
     }
   }
+  
   return (
     <Container>
         <SaveRecipeButton recipe={props.recipe}></SaveRecipeButton>        

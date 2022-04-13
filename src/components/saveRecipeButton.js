@@ -13,8 +13,8 @@ function SaveRecipeButton (props) {
   //Load user data 
   useEffect(async () => {
     setUserData('')
-    const getRoute = '/saved/' + currentUser.uid
-    const userData = await queryRecipes(getRoute)
+    const route = '/saved/' + currentUser.uid
+    const userData = await queryRecipes(route)
     setUserData(userData.data[0]) //current user data is fetched as an array, but only contains one element (TODO: find out why)
   }, [])
 
@@ -22,7 +22,7 @@ function SaveRecipeButton (props) {
 
     const userData = getUserData
 
-    //Check if user has already saved this recipe
+    //Check if user has already saved this recipe to avoid duplicate save
     if(userData.savedItems.includes(props.recipe._id)) {
       return 
     }
@@ -40,8 +40,40 @@ function SaveRecipeButton (props) {
       }, 
     })
       .then(res => console.log(res))
-  }  
-  return <Button name="saveRecipe" value="add" onClick={addRecipe}>Save this recipe</Button>
+  }
+
+  const removeRecipe = () => {
+
+    const userData = getUserData
+
+    //Check that user has user has recipe to ensure item exists for deletion
+    if(!userData.savedItems.includes(props.recipe._id)) {
+      return 
+    }
+
+    userData.savedItems = userData.savedItems.filter(element => props.recipe._id != element) 
+
+    axios.patch("/save_recipe", userData, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length"
+      }, 
+    })
+      .then(res => console.log(res))
+  }
+  
+  const renderButton = () => {
+    const url = window.location.href
+    if(url.includes("recipes")) {
+      return <Button name="saveRecipe" value="add" onClick={addRecipe}>Save this recipe</Button>
+    } else {
+      return <Button name="saveRecipe" value="remove" onClick={removeRecipe}>Remove this recipe</Button>
+    }
+  }
+
+  return renderButton()
 }
 
 export default SaveRecipeButton

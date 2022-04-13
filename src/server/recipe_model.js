@@ -28,10 +28,6 @@ const RecipeSchema = new mongoose.Schema({
     main_display: {
       type: Boolean,
       required: true
-    },
-    saved: {
-      type: Boolean,
-      required: true
     }
 })
 

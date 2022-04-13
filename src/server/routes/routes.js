@@ -46,14 +46,8 @@ app.get("/recipes", async (request, response) => {
 
 //FIX: this route is getting called twice. 
 app.get("/recipes/user", async (request, response) => {
-
-  //TODO: Find how to use findById (some kind of IN operator)
   let ids = request.query.recipe
-  console.log(ids)
-  const recipes = await recipeModel.find({ '_id': { $in: ids } });
-
-  // const recipes = await recipeModel.findByIds(ids)
-
+  const recipes = await recipeModel.find({ '_id': { $in: ids } })
   try {
     response.send(recipes)
   } catch (error) {
@@ -71,5 +65,17 @@ app.get("/saved/:userId", async (request, response) => {
     response.status(500).send(error)
   }
 });
+
+app.delete("/recipe/remove", async (request, response) => {
+  let ids = request.query.recipe
+  console.log(ids)
+  const recipes = await recipeModel.find({ '_id': { $in: ids } })
+
+  try {
+    response.send(recipes)
+  } catch (error) {
+    response.status(500).send(error)
+  }
+})
 
 module.exports = app
